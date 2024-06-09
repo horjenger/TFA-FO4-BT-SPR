@@ -17,11 +17,11 @@ SWEP.AutoSwitchFrom			= true		-- Auto switch from if you pick up a better weapon
 SWEP.Weight				= 30			-- This controls how "good" the weapon is for autopickup.
 
 --[[WEAPON HANDLING]]--
-SWEP.Primary.Sound = Sound("TFA_SR_SKS.1") -- This is the sound of the weapon, when you shoot.
+SWEP.Primary.Sound = Sound("TFA_FO4_BT_SPR.Fire") -- This is the sound of the weapon, when you shoot.
 SWEP.Primary.SilencedSound = Sound("TFA_SR_SKS.2") -- This is the sound of the weapon, when silenced.
 SWEP.Primary.LoopSoundAutoOnly = false
 SWEP.Primary.PenetrationMultiplier = 1 --Change the amount of something this gun can penetrate through
-SWEP.Primary.Damage = 1000 -- Damage, in standard damage points.
+SWEP.Primary.Damage = 100 -- Damage, in standard damage points.
 SWEP.Primary.DamageTypeHandled = true --true will handle damagetype in base
 SWEP.Primary.DamageType = nil --See DMG enum.  This might be DMG_SHOCK, DMG_BURN, DMG_BULLET, etc.  Leave nil to autodetect.  DMG_AIRBOAT opens doors.
 SWEP.Primary.Force = nil --Force value, leave nil to autocalc
@@ -36,8 +36,8 @@ SWEP.Primary.DryFireDelay = nil --How long you have to wait after firing your la
 SWEP.Primary.BurstDelay = nil -- Delay between bursts, leave nil to autocalculate
 SWEP.FiresUnderwater = false
 --Miscelaneous Sounds
-SWEP.IronInSound = Sound("TFA_SR.LeanIn") --Sound to play when ironsighting in?  nil for default
-SWEP.IronOutSound = Sound("TFA_SR.LeanOut") --Sound to play when ironsighting out?  nil for default
+SWEP.IronInSound = Sound("SHRIMP_CUSTOM.ADSIn") --Sound to play when ironsighting in?  nil for default
+SWEP.IronOutSound = Sound("SHRIMP_CUSTOM.ADSOut") --Sound to play when ironsighting out?  nil for default
 --Silencing
 SWEP.CanBeSilenced = false --Can we silence?  Requires animations.
 SWEP.Silenced = false --Silenced by default?
@@ -50,7 +50,7 @@ SWEP.FireModeName = "BOLT-ACTION" --Change to a text value to override it
 --Ammo Related
 SWEP.Primary.ClipSize = 10 -- This is the size of a clip
 SWEP.Primary.DefaultClip = SWEP.Primary.ClipSize * 3 -- This is the number of bullets the gun gives you, counting a clip as defined directly above.
-SWEP.Primary.Ammo = "ar2" -- What kind of ammo.  Options, besides custom, include pistol, 357, smg1, ar2, buckshot, slam, SniperPenetratedRound, and AirboatGun.
+SWEP.Primary.Ammo = "SniperPenetratedRound" -- What kind of ammo.  Options, besides custom, include pistol, 357, smg1, ar2, buckshot, slam, SniperPenetratedRound, and AirboatGun.
 SWEP.Primary.AmmoConsumption = 1 --Ammo consumed per shot
 --Pistol, buckshot, and slam like to ricochet. Use AirboatGun for a light metal peircing shotgun pellets
 SWEP.DisableChambering = false --Disable round-in-the-chamber
@@ -82,7 +82,7 @@ SWEP.ViewModel			= "models/weapons/fo4/c_fo4_bt_spr.mdl" --Viewmodel path
 SWEP.ViewModelFOV			= 70		-- This controls how big the viewmodel looks.  Less is more.
 SWEP.ViewModelFlip			= false		-- Set this to true for CSS models, or false for everything else (with a righthanded viewmodel.)
 SWEP.UseHands = true --Use gmod c_arms system.
-SWEP.VMPos = Vector(0,0,0) --The viewmodel positional offset, constantly.  Subtract this from any other modifications to viewmodel position.
+SWEP.VMPos = Vector(0,-1,0) --The viewmodel positional offset, constantly.  Subtract this from any other modifications to viewmodel position.
 SWEP.VMAng = Vector(0,0,0) --The viewmodel angular offset, constantly.   Subtract this from any other modifications to viewmodel angle.
 SWEP.VMPos_Additive = false --Set to false for an easier time using VMPos. If true, VMPos will act as a constant delta ON TOP OF ironsights, run, whateverelse
 SWEP.CenteredPos = nil --The viewmodel positional offset, used for centering.  Leave nil to autodetect using ironsights.
@@ -136,8 +136,8 @@ SWEP.RunSightsAng = Vector(-24, 32, -32)
 --[[IRONSIGHTS]]--
 SWEP.data = {}
 SWEP.data.ironsights = 1 --Enable Ironsights
-SWEP.Secondary.IronFOV = 70 -- How much you 'zoom' in. Less is more!  Don't have this be <= 0.  A good value for ironsights is like 70.
-SWEP.IronSightsPos = Vector(-0.015, 0, -0.05)
+SWEP.Secondary.IronFOV = 85 -- How much you 'zoom' in. Less is more!  Don't have this be <= 0.  A good value for ironsights is like 70.
+SWEP.IronSightsPos = Vector(-0.015, -2, -0.05)
 SWEP.IronSightsAng = Vector(0, 0, 0)
 
 --[[INSPECTION]]--
@@ -249,7 +249,7 @@ SWEP.MuzzleFlashEffect = nil --Change to a string of your muzzle flash effect.  
 SWEP.SmokeParticle = nil --Smoke particle (ID within the PCF), defaults to something else based on holdtype; "" to disable
 SWEP.EjectionSmokeEnabled = false --Disable automatic ejection smoke
 --Shell eject override
-SWEP.LuaShellEject = true --Enable shell ejection through lua?
+SWEP.LuaShellEject = false --Enable shell ejection through lua?
 SWEP.LuaShellEjectDelay = 0 --The delay to actually eject things
 SWEP.LuaShellEffect = "RifleShellEject" --The effect used for shell ejection; Defaults to that used for blowback
 --Tracer Stuff
@@ -258,9 +258,6 @@ SWEP.TracerCount 		= 3 	--0 disables, otherwise, 1 in X chance
 --Impact Effects
 SWEP.ImpactEffect = nil--Impact Effect
 SWEP.ImpactDecal = nil--Impact Decal
-SWEP.EventTable = {
-}
-
 --[[RENDER TARGET]]--
 SWEP.RTMaterialOverride = nil -- Take the material you want out of print(LocalPlayer():GetViewModel():GetMaterials()), subtract 1 from its index, and set it to this.
 SWEP.RTOpaque = false -- Do you want your render target to be opaque?
@@ -288,8 +285,62 @@ SWEP.WElements = {
 SWEP.Attachments = {
 
 }
-SWEP.AttachmentDependencies = {}--{["si_acog"] = {"bg_rail"}}
-SWEP.AttachmentExclusions = {}--{ ["si_iron"] = {"bg_heatshield"} }
+
+SWEP.EventTable = {
+	["equip"] = {
+		{time = 0.1666666716337204, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRaise")},
+		{time = 0.23333333432674408, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRBoltClose")},
+		{time = 1.0333333015441895, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRReloadEnd")},
+	},
+	["draw"] = {
+		{time = 0.36666667461395264, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRReloadEnd")},
+	},
+	["holster"] = {
+		{time = 0.06666667014360428, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRaise")},
+	},
+	["reload"] = {
+		{time = 0.0833333358168602, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRaise")},
+		{time = 0.4833333492279053, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagGrab")},
+		{time = 0.5166666507720947, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagOut")},
+		{time = 1.25, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagHit")},
+		{time = 2.2166666984558105, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagIn")},
+		{time = 2.8333334922790527, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRReloadEnd")},
+	},
+	["reload_empty"] = {
+		{time = 0.0833333358168602, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRaise")},
+		{time = 0.3283333480358124, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRBoltOpen")},
+		{time = 1.0516667366027832, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagGrab")},
+		{time = 1.0850000381469727, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagOut")},
+		{time = 1.7416666746139526, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagDrop")},
+		{time = 1.818333387374878, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagHit")},
+		{time = 2.7866666316986084, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRMagIn")},
+		{time = 3.31166672706604, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRBoltClose")},
+		{time = 4.113333225250244, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRReloadEnd")},
+		{ ["time"] = 18 / 30, ["type"] = "lua", ["value"] = function(wep,vm)
+			if wep and wep.EventShell then
+				wep:EventShell()
+			end
+		end, ["client"] = true, ["server"] = true },
+	},
+	["bolt"] = {
+		{time = 0.13333334028720856, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRechamberUp")},
+		{time = 0.3333333432674408, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRechamber")},
+		{ ["time"] = 18 / 30, ["type"] = "lua", ["value"] = function(wep,vm)
+			if wep and wep.EventShell then
+				wep:EventShell()
+			end
+		end, ["client"] = true, ["server"] = true },
+	},
+	["bolt_ads"] = {
+		{time = 0.13333334028720856, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRechamberUp")},
+		{time = 0.3333333432674408, type = "sound", value = Sound("TFA_FO4_BT_SPR.WPNSPRRechamber")},
+		{ ["time"] = 18 / 30, ["type"] = "lua", ["value"] = function(wep,vm)
+			if wep and wep.EventShell then
+				wep:EventShell()
+			end
+		end, ["client"] = true, ["server"] = true },
+	},
+}
 
 SWEP.MuzzleAttachmentSilenced = 2
 
