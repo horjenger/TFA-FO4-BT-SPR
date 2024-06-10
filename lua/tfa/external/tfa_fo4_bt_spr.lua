@@ -2,6 +2,7 @@ local path = "shrimp/fo4/bt_spr/"
 local pref = "TFA_FO4_BT_SPR"
 
 TFA.AddSound(pref..".Fire", CHAN_USER_BASE, 1, 140, {99, 101}, path.."SPR_Fire01.wav", "SPR_Fire02.wav", "SPR_Fire03.wav", ")")
+TFA.AddSound(pref..".Suppressor", CHAN_USER_BASE, 1, 140, {99, 101}, path.."SPR_Fire01_Silenced.wav", "SPR_Fire02_Silenced.wav", "SPR_Fire03_Silenced.wav", ")")
 
 TFA.AddWeaponSound(pref .. ".WPNSPRRaise", path .. "Foley/SP-R 208_raise_quick.wav")
 TFA.AddWeaponSound(pref .. ".WPNSPRBoltClose", path .. "Foley/SP-R 208_reload_empty_fast_xmags_boltclose.wav")

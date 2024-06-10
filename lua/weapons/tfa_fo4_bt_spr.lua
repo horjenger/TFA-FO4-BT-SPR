@@ -18,7 +18,7 @@ SWEP.Weight				= 30			-- This controls how "good" the weapon is for autopickup.
 
 --[[WEAPON HANDLING]]--
 SWEP.Primary.Sound = Sound("TFA_FO4_BT_SPR.Fire") -- This is the sound of the weapon, when you shoot.
-SWEP.Primary.SilencedSound = Sound("TFA_SR_SKS.2") -- This is the sound of the weapon, when silenced.
+SWEP.Primary.SilencedSound = Sound("TFA_FO4_BT_SPR.Suppressor") -- This is the sound of the weapon, when silenced.
 SWEP.Primary.LoopSoundAutoOnly = false
 SWEP.Primary.PenetrationMultiplier = 1 --Change the amount of something this gun can penetrate through
 SWEP.Primary.Damage = 100 -- Damage, in standard damage points.
@@ -164,12 +164,17 @@ SWEP.SprintHoldTypeOverride = "" --This variable overrides the sprint holdtype, 
 --[[ANIMATION]]--
 
 SWEP.StatusLengthOverride = {
-} --Changes the status delay of a given animation; only used on reloads.  Otherwise, use SequenceLengthOverride or one of the others
-SWEP.SequenceLengthOverride = {} --Changes both the status delay and the nextprimaryfire of a given animation
+}
+SWEP.SequenceLengthOverride = {
+	["bolt"] = 1,
+	["bolt_ads"] = 1,
+	["draw"] = 1,
+	["reload"] = 3.2,
+	["reload_empty"] = 4.5,
+}
 SWEP.SequenceRateOverride = {
 } --Like above but changes animation length to a target
 SWEP.SequenceRateOverrideScaled = {} --Like above but scales animation length rather than being absolute
-
 SWEP.ProceduralHoslterEnabled = nil
 SWEP.ProceduralHolsterTime = 0.3
 SWEP.ProceduralHolsterPos = Vector(3, 0, -5)
@@ -184,12 +189,6 @@ SWEP.Walk_Mode = TFA.Enum.IDLE_ANI
 SWEP.Customize_Mode = TFA.Enum.LOCOMOTION_HYBRID
 SWEP.Idle_Mode = TFA.Enum.IDLE_ANI
 --MDL Animations Below
-SWEP.IronAnimation = {
-}
-
-SWEP.SprintAnimation = {
-
-}
 
 SWEP.PumpAction = {
 	["type"] = TFA.Enum.ANIMATION_ACT,                        -- Sequence or act
@@ -283,7 +282,7 @@ SWEP.WElements = {
 }
 
 SWEP.Attachments = {
-
+	[1] = { atts = { "fo4_bt_spr_long_barrel", "fo4_bt_spr_supp_barrel" } },
 }
 
 SWEP.EventTable = {
